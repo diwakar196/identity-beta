@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  cleanup:
+    image: alpine:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      /bin/sh -c "
+      echo '🛑 Stopping and removing previous containers...' &&
+      docker rm -f $(docker ps -aq) || true &&
+      echo '🧹 Removing old images...' &&
+      docker rmi -f $(docker images -q) || true &&
+      echo '✅ Cleanup completed! Starting application...'
+      "
+    deploy:
+      restart_policy:
+        condition: none  # Ensure cleanup runs only once
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - cleanup  # Ensure cleanup runs before starting the app
+      - redis
+    env_file:
+      - .env
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    env_file:
+      - .env

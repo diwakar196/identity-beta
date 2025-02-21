@@ -1,0 +1,18 @@
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+app_venv/ 
+
+# Docker specific
+*.log
+docker-compose.override.yml
+
+# VS Code & IDE related
+.vscode/
+.idea/
+*.swp
+*.swo
