@@ -22,7 +22,7 @@
 ```
 1. Different secret keys or algorithms for access and refresh tokens to identify which one's being passed
 2. Policies can be assigned to the users according to their authority
-3. DB can be used to actually store the values and even use them after reinstanstiating the app
+3. DB can be used to actually store the values and even use them after reinstantiating the app
 ... ... ... ... etc
 ```
 
