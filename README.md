@@ -1,4 +1,4 @@
-# Advait-Prashant-Assignment by Diwakar Singh
+# IdentityBeta by Diwakar Singh
 
 ## Warning
 .env is not supposed to be pushed but it's there for your sake
